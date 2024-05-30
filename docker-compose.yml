@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  tributary:
+    build: .
+    ports:
+      - "8000:8000"  # Bind to localhost
+    depends_on: # Waits for redis service to start before tributary runs
+      - redis
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
